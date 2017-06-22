@@ -1,0 +1,3 @@
+dependencies {
+	integrationTestCompile "io.rest-assured:rest-assured:${restassuredVersion}"
+}

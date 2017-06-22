@@ -1,0 +1,38 @@
+configurations {
+  integrationTestCompile.extendsFrom testCompile
+  integrationTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+	integrationTest {
+		java {
+			compileClasspath += main.output
+			runtimeClasspath += main.output
+		}
+		java.srcDir file('src/integrationTest/java')
+		resources.srcDir file('src/integrationTest/resources')
+	}
+}
+
+task integrationTest(type: Test) {
+	group = 'Verification'
+	description = 'Runs the integration tests.'
+	dependsOn 'assemble', 'integrationTestClasses'
+	classpath = sourceSets.integrationTest.runtimeClasspath
+	testClassesDir = sourceSets.integrationTest.output.classesDir
+	outputs.upToDateWhen { false }
+}
+
+tasks.withType(Test) {
+	testLogging.exceptionFormat = 'full'
+	reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test
+
+eclipse {
+	classpath {
+		plusConfigurations += [ configurations.integrationTestRuntime ]
+	}
+}

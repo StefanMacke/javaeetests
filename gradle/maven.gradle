@@ -1,0 +1,10 @@
+apply plugin: 'maven'
+
+repositories {
+	mavenLocal()
+	if (project.hasProperty("artifactRepository")) {
+		maven { url = artifactRepository }
+	} else {
+		mavenCentral()
+	}
+}

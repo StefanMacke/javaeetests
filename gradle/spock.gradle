@@ -1,0 +1,4 @@
+dependencies {
+	testCompile "org.codehaus.groovy:groovy-all:${groovyVersion}",
+		"org.spockframework:spock-core:${spockVersion}"
+}

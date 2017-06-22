@@ -1,0 +1,8 @@
+apply plugin: 'jdepend'
+
+tasks.withType(JDepend) {
+    reports {
+        xml.enabled true
+        text.enabled false
+    }
+}

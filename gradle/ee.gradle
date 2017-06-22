@@ -1,0 +1,20 @@
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+eclipse {
+	wtp {
+		facet {
+			facet name:'jpt.jpa', version:'2.1'
+			facet name:'jst.web', version:'3.1'
+			facet name:'jst.jaxrs', version:'2.0'
+			facet name:'jst.jsf', version:'2.2'
+		}
+		component {
+			contextPath = 'Demo'
+		}
+	}
+}
+
+dependencies {
+	compile 'javax:javaee-api:7.0'
+}

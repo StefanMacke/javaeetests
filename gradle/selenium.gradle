@@ -1,0 +1,5 @@
+dependencies {
+	integrationTestCompile 'org.jboss.arquillian.extension:arquillian-drone-bom:2.0.0.Final',
+		'org.jboss.arquillian.selenium:selenium-bom:2.53.0',
+		'org.jboss.arquillian.graphene:graphene-webdriver:2.0.3.Final'
+}

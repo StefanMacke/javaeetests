@@ -1,0 +1,5 @@
+dependencies {
+	// needed at compile time for Slf4jSessionLogger
+	integrationTestCompile "org.eclipse.persistence:eclipselink:${eclipselinkVersion}"
+	integrationTestRuntime "org.apache.derby:derby:${derbyVersion}"
+}

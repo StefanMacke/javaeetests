@@ -1,0 +1,6 @@
+dependencies {
+	integrationTestCompile "org.jboss.arquillian:arquillian-bom:${arquillianVersion}",
+		"org.jboss.arquillian.junit:arquillian-junit-container:${arquillianVersion}",
+		'org.jboss.arquillian.extension:arquillian-rest-client-impl-jersey:1.0.0.Alpha4'
+	integrationTestRuntime "org.arquillian.container:arquillian-container-chameleon:${chameleonVersion}"
+}

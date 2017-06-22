@@ -1,0 +1,9 @@
+dependencies {
+    testCompile "org.mockito:mockito-core:${mockitoVersion}",
+    	// for mocking static methods
+		"org.powermock:powermock-module-junit4:${powermockVersion}",
+		"org.powermock:powermock-api-mockito2:${powermockVersion}"
+	// fixes: java.lang.IllegalStateException: Failed to transform class with name it.macke.javaeetests.service.UserServiceAlsoShould.
+	//        Reason: java.io.IOException: invalid constant type: 18
+	compile "org.javassist:javassist:3.21.0-GA"
+}

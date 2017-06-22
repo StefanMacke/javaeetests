@@ -1,0 +1,4 @@
+dependencies {
+	testCompile 'org.hibernate:hibernate-validator:5.4.1.Final',
+		'org.glassfish.web:javax.el:2.2.4'
+}

@@ -1,0 +1,4 @@
+dependencies {
+	integrationTestCompile "org.eclipse.jetty:jetty-server:${jettyVersion}"
+	integrationTestRuntime "org.eclipse.jetty:jetty-servlet:${jettyVersion}"
+}

@@ -1,0 +1,6 @@
+dependencies {
+	classpath 'com.puppycrawl.tools:checkstyle:6.+',
+		'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2.1',
+		'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M3',
+		'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.11'
+}

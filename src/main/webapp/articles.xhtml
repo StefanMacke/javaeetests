@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="styles.css" />
+	<title>Articles</title>
+</h:head>
+<h:body>
+	<div id="container" class="container-fluid">
+		<div id="content">
+			<h1>Articles</h1>
+
+			<ui:repeat value="#{articleController.articles}" var="article">
+				<header>
+					<h2><h:outputText value="#{article.title}" escape="false" /></h2>
+				</header>
+				<p>
+					<h:outputText value="#{article.excerpt}" escape="false" />
+				</p>
+				<small>
+					<h:outputText value="#{article.url}" escape="false" />
+				</small>
+				<hr />
+			</ui:repeat>			
+
+			<h:messages id="messages" errorClass="text-danger bg-danger" globalOnly="true" />
+		</div>
+	</div>
+</h:body>
+</html>

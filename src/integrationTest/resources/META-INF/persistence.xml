@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="IntegrationTest" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>it.macke.javaeetests.domain.User</class>
+		<class>it.macke.javaeetests.persistence.PasswordConverter</class>
+		<class>it.macke.javaeetests.persistence.SaltConverter</class>
+		<class>it.macke.javaeetests.persistence.UserNameConverter</class>
+		<properties>
+			<property name="eclipselink.target-database" value="Derby" />
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:./IntegrationTest.db;create=true" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+            <property name="eclipselink.logging.logger" value="com.blogspot.nurkiewicz.Slf4jSessionLogger" />
+			<property name="eclipselink.logging.level" value="FINEST" />
+            <property name="eclipselink.logging.sql" value="FINEST"/>
+            <property name="eclipselink.logging.level.sql" value="FINEST"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+		</properties>
+	</persistence-unit>
+</persistence>

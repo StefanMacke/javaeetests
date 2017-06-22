@@ -1,0 +1,10 @@
+dependencies {
+	testRuntime "org.glassfish.jersey.core:jersey-client:${jerseyVersion}",
+		// needed for JSON calls, otherwise Jetty returns 415 Unsupported Media Type
+		"org.glassfish.jersey.media:jersey-media-json-jackson:${jerseyVersion}",
+		// needed for ArticleService: javax.json.JsonException: Provider org.glassfish.json.JsonProviderImpl not found
+		"org.glassfish:javax.json:1.1"
+	integrationTestCompile "org.slf4j:jul-to-slf4j:${slf4jVersion}",
+		"org.glassfish.jersey.core:jersey-server:${jerseyVersion}",
+		"org.glassfish.jersey.containers:jersey-container-servlet:${jerseyVersion}"
+}

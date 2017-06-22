@@ -1,0 +1,64 @@
+description = "Automated Testing for Java EE"
+
+configurations.create('${project.name}')
+
+buildscript {
+	repositories {
+		mavenLocal()
+		if (project.hasProperty("artifactRepository")) {
+			maven { url = artifactRepository }
+		} else {
+			mavenCentral()
+		}
+	}
+	apply from: "gradle/classpath.gradle", to: buildscript
+}
+
+[
+	"maven",
+	"project-report",
+	"java",
+	"groovy",
+	"eclipse",
+	"integrationtests",
+	"ee",
+	"junit5",
+	"mockito",
+	"checkstyle",
+	"findbugs",
+	"pmd",
+	"jacoco",
+	"tasks",
+	"jdepend",
+	"sonarqube",
+	"spock",
+	"beanvalidation",
+	"quickcheck",
+	"pitest",
+	"derby",
+	"jersey",
+	"jetty",
+	"restassured",
+	"arquillian",
+	"selenium",
+	"wiremock"
+].each {
+	apply from: "${project.gradleApplyFromPath}/${it}.gradle"
+}
+
+repositories.each { logger.info("Repository $it.name") }
+
+dependencies {
+	compile 'xml-apis:xml-apis:1.4.01',
+		"org.slf4j:slf4j-api:${slf4jVersion}",
+		"org.slf4j:slf4j-simple:${slf4jVersion}",
+		"org.slf4j:jul-to-slf4j:${slf4jVersion}",
+		'com.google.guava:guava:22.0'
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'xml-apis:xml-apis:1.4.01'
+    }
+}

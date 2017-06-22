@@ -1,0 +1,4 @@
+dependencies {
+	testCompile "com.pholser:junit-quickcheck-core:${quickcheckVersion}",
+		"com.pholser:junit-quickcheck-generators:${quickcheckVersion}"
+}
