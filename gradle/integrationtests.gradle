@@ -19,7 +19,7 @@ task integrationTest(type: Test) {
 	description = 'Runs the integration tests.'
 	dependsOn 'assemble', 'integrationTestClasses'
 	classpath = sourceSets.integrationTest.runtimeClasspath
-	testClassesDir = sourceSets.integrationTest.output.classesDir
+	testClassesDirs = sourceSets.integrationTest.output.classesDirs
 	outputs.upToDateWhen { false }
 }
 

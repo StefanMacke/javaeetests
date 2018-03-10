@@ -1,7 +1,13 @@
 package it.macke.javaeetests.viewmodel;
 
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanConstructor;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEquals;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCode;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanToString;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetters;
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.Set;
 
@@ -12,12 +18,7 @@ import javax.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
-import com.octodecillion.test.PropertyAsserter;
-
-@RunWith(JUnitPlatform.class)
 public class CredentialsShould
 {
 	private Credentials sut;
@@ -34,16 +35,21 @@ public class CredentialsShould
 	@DisplayName("be valid if all attributes are set")
 	public void beValid()
 	{
-		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-		Set<ConstraintViolation<Credentials>> constraintViolations = validator.validate(sut);
+		final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+		final Set<ConstraintViolation<Credentials>> constraintViolations = validator.validate(sut);
 
 		assertThat(constraintViolations.size(), is(0));
 	}
 
 	@Test
-	@DisplayName("implement its basic Getters and Setters correctly")
-	public void implementBasicGettersAndSettersCorrectly() throws Exception
+	@DisplayName("be a valid Bean")
+	public void beABean()
 	{
-		PropertyAsserter.assertBasicGetterSetterBehavior(sut);
+		assertThat(Credentials.class, allOf(
+				hasValidBeanConstructor(),
+				hasValidGettersAndSetters(),
+				hasValidBeanHashCode(),
+				hasValidBeanEquals(),
+				hasValidBeanToString()));
 	}
 }

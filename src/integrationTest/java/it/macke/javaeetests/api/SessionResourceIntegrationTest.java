@@ -24,8 +24,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +31,6 @@ import io.restassured.http.ContentType;
 import it.macke.javaeetests.service.UserService;
 import it.macke.javaeetests.viewmodel.Credentials;
 
-@RunWith(JUnitPlatform.class)
 @DisplayName("Integration test for SessionResource")
 public class SessionResourceIntegrationTest
 {

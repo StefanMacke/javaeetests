@@ -8,12 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import it.macke.javaeetests.viewmodel.Article;
 
-@RunWith(JUnitPlatform.class)
 @DisplayName("An ArticleService should")
 public class ArticleServiceShould
 {

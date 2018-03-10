@@ -22,7 +22,7 @@ buildscript {
 	"eclipse",
 	"integrationtests",
 	"ee",
-	"junit5",
+	"junit-jupiter",
 	"mockito",
 	"checkstyle",
 	"findbugs",
@@ -30,6 +30,7 @@ buildscript {
 	"jacoco",
 	"tasks",
 	"jdepend",
+	"beanmatchers",
 	"spock",
 	"beanvalidation",
 	"quickcheck",
@@ -45,14 +46,20 @@ buildscript {
 	apply from: "${project.gradleApplyFromPath}/${it}.gradle"
 }
 
-repositories.each { logger.info("Repository $it.name") }
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.3.1'
+	distributionUrl = "http://artifacts.ao-devnet/gradle-dist/gradle-${gradleVersion}-bin.zip"
+	doFirst {
+		println("Gradle Verison: $gradleVersion and URL: $distributionUrl")
+	}
+}
 
 dependencies {
-	compile 'xml-apis:xml-apis:1.4.01',
+	compile "xml-apis:xml-apis:1.4.01",
 		"org.slf4j:slf4j-api:${slf4jVersion}",
 		"org.slf4j:slf4j-simple:${slf4jVersion}",
 		"org.slf4j:jul-to-slf4j:${slf4jVersion}",
-		'com.google.guava:guava:22.0'
+		"com.google.guava:guava:${guavaVersion}"
 
 }
 

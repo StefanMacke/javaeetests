@@ -2,7 +2,7 @@
 
 This Java project shows how to test each individual component of a Java EE 7 application. It uses many different frameworks for testing each component in isolation. On top of that there are also integration tests on a real application server. The project is built with [Gradle](https://gradle.org/ "Gradle"). These frameworks and tools are used:
 
-*   POJOs: JUnit 5, Spock, JUnit-QuickCheck, PropertyAsserter
+*   POJOs: JUnit 5, Spock, JUnit-QuickCheck, Bean Matchers
 *   Stubbing/Mocking: Mockito, PowerMock
 *   JPA: Apache Derby, EclipseLink
 *   Bean Validation: Hibernate Validator

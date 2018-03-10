@@ -1,10 +1,14 @@
 package it.macke.javaeetests.domain;
 
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanConstructor;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEquals;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCode;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanToString;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetters;
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -14,12 +18,7 @@ import javax.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
-import com.octodecillion.test.PropertyAsserter;
-
-@RunWith(JUnitPlatform.class)
 @DisplayName("A User should")
 public class UserShould
 {
@@ -32,19 +31,15 @@ public class UserShould
 	}
 
 	@Test
-	@DisplayName("implement its basic Getters and Setters correctly")
-	public void implementBasicGettersAndSettersCorrectly()
+	@DisplayName("be a valid Bean")
+	public void beABean()
 	{
-		PropertyAsserter.assertBasicGetterSetterBehavior(sut);
-	}
-
-	@Test
-	@DisplayName("implement its Getters and Setters for individual types correctly")
-	public void implementGettersAndSettersForIdividualTypesCorrectly() throws Exception
-	{
-		final Map<String, Object> properties = new HashMap<>();
-		properties.put("userName", new UserName("validusername"));
-		PropertyAsserter.assertBasicGetterSetterBehavior(sut, properties);
+		assertThat(User.class, allOf(
+				hasValidBeanConstructor(),
+				hasValidGettersAndSetters(),
+				hasValidBeanHashCode(),
+				hasValidBeanEquals(),
+				hasValidBeanToString()));
 	}
 
 	@Test

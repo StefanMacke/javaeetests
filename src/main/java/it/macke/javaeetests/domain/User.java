@@ -80,8 +80,10 @@ public class User
 	public String toString()
 	{
 		return MoreObjects.toStringHelper(this)
+				.add("id", getId())
 				.add("userName", getUserName())
 				.add("password", getPassword())
+				.add("salt", getSalt())
 				.toString();
 	}
 

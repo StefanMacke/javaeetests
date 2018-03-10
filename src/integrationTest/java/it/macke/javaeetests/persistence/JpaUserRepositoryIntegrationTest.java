@@ -11,8 +11,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +18,6 @@ import it.macke.javaeetests.domain.User;
 import it.macke.javaeetests.setup.TestData;
 import it.macke.javaeetests.setup.TestDataCreator;
 
-@RunWith(JUnitPlatform.class)
 @DisplayName("Integration test for JpaUserRepository")
 public class JpaUserRepositoryIntegrationTest
 {

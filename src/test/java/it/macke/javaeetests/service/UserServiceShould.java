@@ -11,14 +11,11 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import it.macke.javaeetests.domain.Password;
 import it.macke.javaeetests.domain.User;
 import it.macke.javaeetests.domain.UserRepository;
 
-@RunWith(JUnitPlatform.class)
 @DisplayName("A UserService should")
 public class UserServiceShould
 {

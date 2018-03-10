@@ -14,14 +14,11 @@ import javax.faces.context.FacesContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 
 import it.macke.javaeetests.service.UserService;
 import it.macke.javaeetests.viewmodel.Credentials;
 
-@RunWith(JUnitPlatform.class)
 @DisplayName("A LoginController should")
 public class LoginControllerShould
 {

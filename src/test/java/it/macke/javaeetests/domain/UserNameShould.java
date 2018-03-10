@@ -13,10 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
-@RunWith(JUnitPlatform.class)
 @DisplayName("A UserName should")
 public class UserNameShould
 {
@@ -34,7 +31,8 @@ public class UserNameShould
 	@DisplayName("not be created from an invalid user name")
 	public void notBeCreatedFromInvalidUserName()
 	{
-		final InvalidUserNameException exception = assertThrows(InvalidUserNameException.class, () -> {
+		final InvalidUserNameException exception = assertThrows(InvalidUserNameException.class, () ->
+		{
 			sut = new UserName("InVaLiD");
 		});
 		assertAll("error message should contain correct cause",
@@ -44,7 +42,8 @@ public class UserNameShould
 
 	@DisplayName("identify valid user names")
 	@ParameterizedTest(name = "valid user name {index}: <{0}>")
-	@ValueSource(strings = { "avalidusername", "anotherone", "and_another_one" })
+	@ValueSource(strings =
+	{ "avalidusername", "anotherone", "and_another_one" })
 	public void identifyValidUserName(final String validUserName) throws Exception
 	{
 		assertTrue(UserName.isValidUserName(validUserName));
@@ -52,12 +51,14 @@ public class UserNameShould
 
 	@DisplayName("identify invalid user names")
 	@ParameterizedTest(name = "invalid user name {index}: <{0}>")
-	@CsvSource({ "asd, too short", "ASDFG, only lower case letters allowed" })
+	@CsvSource(
+	{ "asd, too short", "ASDFG, only lower case letters allowed" })
 	public void identifyInvalidUserName(final String invalidUserName, final String message) throws Exception
 	{
 		assertFalse(UserName.isValidUserName(invalidUserName),
 				() -> "Username <" + invalidUserName + "> should be invalid (" + message + ")");
-		final InvalidUserNameException exception = assertThrows(InvalidUserNameException.class, () -> {
+		final InvalidUserNameException exception = assertThrows(InvalidUserNameException.class, () ->
+		{
 			sut = new UserName(invalidUserName);
 		});
 		assertAll("error message should contain correct cause",

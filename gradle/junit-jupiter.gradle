@@ -1,0 +1,19 @@
+apply plugin: 'org.junit.platform.gradle.plugin'
+ 
+dependencies {
+    testCompile "org.hamcrest:hamcrest-library:${hamcrestVersion}",
+    	"org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}",
+        "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}",
+        "org.assertj:assertj-core:${assertjVersion}"
+	
+	testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}",
+		"org.junit.platform:junit-platform-launcher:${junitPlatformVersion}",
+		// for running JUnit 4 tests
+		"org.junit.vintage:junit-vintage-engine:${junitJupiterVersion}"
+}
+
+junitPlatform {
+	filters {
+		includeClassNamePattern '.*(Test|Should|Properties|Spec|IntegrationTest)'
+    }
+}
