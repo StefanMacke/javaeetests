@@ -1,12 +1,22 @@
 apply plugin: 'checkstyle'
 
 checkstyle {
-	project.ext.checkstyleVersion = "${checkstyleVersion}"
-	toolVersion = "${checkstyleVersion}"
+	project.ext.checkstyleVersion = '6.15'
+	toolVersion = '6.15'
 	ignoreFailures = true
 	configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
 
-	dependencies {
+	dependencies{
+		assert project.hasProperty("checkstyleVersion")
 		checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
 	}
+}
+
+task checkstyle {
+	group 'Verification'
+	description 'Runs Checkstyle'
+	
+	dependsOn "checkstyleMain"
+	dependsOn "checkstyleTest"
+	dependsOn "checkstyleIntegrationTest"
 }

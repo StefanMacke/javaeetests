@@ -16,7 +16,7 @@ import it.macke.javaeetests.domain.Password;
 import it.macke.javaeetests.domain.User;
 import it.macke.javaeetests.domain.UserRepository;
 
-@DisplayName("A UserService should")
+@DisplayName("UserService should")
 public class UserServiceShould
 {
 	private UserService sut;

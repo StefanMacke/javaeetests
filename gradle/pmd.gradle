@@ -10,6 +10,11 @@ tasks.withType(Pmd) {
     }
 }
 
-pmd {
-    toolVersion = "${pmdVersion}"
+task pmd {
+	group 'Verification'
+	description 'Runs PMD'
+	
+	dependsOn "pmdMain"
+	dependsOn "pmdTest"
+	dependsOn "pmdIntegrationTest"
 }

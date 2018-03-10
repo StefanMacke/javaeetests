@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import it.macke.javaeetests.service.UserService;
 import it.macke.javaeetests.viewmodel.Credentials;
 
-@DisplayName("A SessionResource should")
+@DisplayName("SessionResource should")
 public class SessionResourceShould
 {
 	private SessionResource sut;

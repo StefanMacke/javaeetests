@@ -10,7 +10,7 @@ eclipse {
 			facet name:'jst.jsf', version:'2.2'
 		}
 		component {
-			contextPath = 'Demo'
+			contextPath = 'JavaEETests'
 		}
 	}
 }

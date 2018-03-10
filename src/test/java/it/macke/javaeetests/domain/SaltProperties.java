@@ -16,7 +16,7 @@ public class SaltProperties
 	@Property
 	public void createOnlyValidSalts()
 	{
-		String salt = Salt.generate().getValue();
+		final String salt = Salt.generate().getValue();
 
 		assertEquals(8, salt.length(),
 				"Salt has to be 8 characters long");

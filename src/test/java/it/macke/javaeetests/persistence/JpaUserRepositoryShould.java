@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import it.macke.javaeetests.domain.User;
 import it.macke.javaeetests.domain.UserName;
 
-@DisplayName("A JpaUserRepository should")
+@DisplayName("JpaUserRepository should")
 public class JpaUserRepositoryShould
 {
 	private JpaUserRepository sut;

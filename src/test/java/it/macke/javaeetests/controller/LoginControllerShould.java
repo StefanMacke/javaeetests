@@ -1,7 +1,6 @@
 package it.macke.javaeetests.controller;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.mock;
@@ -19,7 +18,7 @@ import org.mockito.ArgumentCaptor;
 import it.macke.javaeetests.service.UserService;
 import it.macke.javaeetests.viewmodel.Credentials;
 
-@DisplayName("A LoginController should")
+@DisplayName("LoginController should")
 public class LoginControllerShould
 {
 	private LoginController sut;
@@ -55,7 +54,7 @@ public class LoginControllerShould
 	{
 		givenTheCredentialsAreCorrect();
 
-		assertThat(sut.login(), is(LoginController.WELCOME_PAGE));
+		assertThat(sut.login()).isEqualTo(LoginController.WELCOME_PAGE);
 	}
 
 	@Test
@@ -64,11 +63,12 @@ public class LoginControllerShould
 	{
 		givenTheCredentialsAreNotCorrect();
 
-		assertThat(sut.login(), is(LoginController.INDEX_PAGE));
+		assertThat(sut.login()).isEqualTo(LoginController.INDEX_PAGE);
 	}
 
 	@Test
 	@DisplayName("show an error message after an unsuccessful login")
+	@SuppressWarnings("unchecked")
 	public void showErrorMessageAfterUnsuccessfulLogin()
 	{
 		givenTheCredentialsAreNotCorrect();
@@ -77,20 +77,21 @@ public class LoginControllerShould
 
 		final ArgumentCaptor<FacesMessage> message = ArgumentCaptor.forClass(FacesMessage.class);
 		verify(facesContext).addMessage(isNull(), message.capture());
-		assertThat(message.getValue().getSeverity(), is(FacesMessage.SEVERITY_ERROR));
-		assertThat(message.getValue().getDetail(), is("Invalid user name or password"));
+		assertThat(message.getValue().getSeverity()).isEqualTo(FacesMessage.SEVERITY_ERROR);
+		assertThat(message.getValue().getDetail()).isEqualTo("Invalid user name or password");
 	}
 
 	@Test
 	@DisplayName("show a nice goodbye message after logou")
+	@SuppressWarnings("unchecked")
 	public void showGoodbyeAfterLogout()
 	{
 		final String targetPage = sut.logout();
-		assertThat(targetPage, is(LoginController.INDEX_PAGE));
+		assertThat(targetPage).isEqualTo(LoginController.INDEX_PAGE);
 
 		final ArgumentCaptor<FacesMessage> message = ArgumentCaptor.forClass(FacesMessage.class);
 		verify(facesContext).addMessage(isNull(), message.capture());
-		assertThat(message.getValue().getSeverity(), is(FacesMessage.SEVERITY_INFO));
-		assertThat(message.getValue().getDetail(), is("Goodbye!"));
+		assertThat(message.getValue().getSeverity()).isEqualTo(FacesMessage.SEVERITY_INFO);
+		assertThat(message.getValue().getDetail()).isEqualTo("Goodbye!");
 	}
 }

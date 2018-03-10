@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import it.macke.javaeetests.viewmodel.Article;
 
-@DisplayName("An ArticleService should")
+@DisplayName("ArticleService should")
 public class ArticleServiceShould
 {
 	private ArticleService sut;

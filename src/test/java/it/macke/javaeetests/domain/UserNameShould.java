@@ -14,7 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-@DisplayName("A UserName should")
+@DisplayName("UserName should")
 public class UserNameShould
 {
 	private UserName sut;

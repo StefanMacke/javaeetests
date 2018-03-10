@@ -8,3 +8,12 @@ tasks.withType(FindBugs) {
     ignoreFailures = true
     reportLevel = 'low'
 }
+
+task findbugs {
+	group 'Verification'
+	description 'Runs Findbugs'
+	
+	dependsOn "findbugsMain"
+	dependsOn "findbugsTest"
+	dependsOn "findbugsIntegrationTest"
+}

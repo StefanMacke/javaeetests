@@ -1,24 +1,29 @@
 apply plugin: 'jacoco'
 
-jacoco {
-    toolVersion = project.jacocoVersion
-    reportsDir = file("${project.reporting.baseDir.absolutePath}/jacoco")
-}
+// https://stackoverflow.com/questions/39362955/gradle-jacoco-and-junit5
+project.afterEvaluate {
+    def junitPlatformTestTask = project.tasks.getByName('junitPlatformTest')
 
-jacocoTestReport {
-    reports {
-        html.enabled true
-        xml.enabled true
-        csv.enabled false
-    }
-}
-
-test {
     jacoco {
-        append = false
-        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
-        classDumpDir = file("$buildDir/jacoco/classdumps")
+        toolVersion = project.jacocoVersion
+        applyTo junitPlatformTestTask
     }
+
+	jacocoTestReport {
+	    reports {
+	        html.enabled true
+	        xml.enabled true
+	        csv.enabled false
+	    }
+	}
+
+    project.task(type: JacocoReport, "junitPlatformJacocoReport",
+            {
+                sourceDirectories = files("./src/main/java/")
+                classDirectories = files("$buildDir/classes/java/main")
+                executionData junitPlatformTestTask
+            })
 }
 
 build.dependsOn jacocoTestReport
+jacocoTestReport.dependsOn test
