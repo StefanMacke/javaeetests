@@ -29,7 +29,7 @@ eclipse.classpath.file {
     }
     whenMerged {  cp ->
         cp.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/") }.each {
-			it.output = it.path.replace("/src", "bin/")
+			it.output = it.path.replace("src/", "bin/")
         }
         cp.entries.removeAll { it.kind == "output" }
     }
