@@ -30,7 +30,6 @@ buildscript {
 	"jacoco",
 	"tasks",
 	"jdepend",
-	"sonarqube",
 	"spock",
 	"beanvalidation",
 	"quickcheck",
