@@ -82,7 +82,7 @@ public class LoginControllerShould
 	}
 
 	@Test
-	@DisplayName("show a nice goodbye message after logou")
+	@DisplayName("show a nice goodbye message after logout")
 	@SuppressWarnings("unchecked")
 	public void showGoodbyeAfterLogout()
 	{
